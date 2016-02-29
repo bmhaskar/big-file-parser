@@ -1,14 +1,28 @@
 {
-  "name": "bigd",
-  "version": "1.0.0",
+  "name": "big-file-parser",
+  "version": "0.0.1",
   "description": "",
   "main": "parse.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha && eslint lib/ tests/"
   },
-  "author": "",
+  "author": "Bharat Mhaskar <bmhaskar@gmail.com>",
   "license": "ISC",
-  "dependencies": {
-    "line-by-line": "^0.1.4"
+  "dependencies": {},
+  "keywords": [
+    "BigData",
+    "Large",
+    "File",
+    "Big",
+    "Parsing",
+    "Parse"
+  ],
+  "devDependencies": {
+    "eslint": "^2.2.0",
+    "sinon": "^1.17.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bmhaskar/big-file-parser.git"
   }
 }
