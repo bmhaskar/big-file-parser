@@ -51,4 +51,4 @@ We do not need to know the legth of the lines in file, it currently assumes `\n`
 3. Make end of line which is currently assumed as  `\n` or `\r\n` or `\r`, configurable. 
 
 
-> Please suggest features and raise a bug request if you find any.  
+> Please suggest features and raise a bug as you find(:smirk:) and I love pull requests. 
