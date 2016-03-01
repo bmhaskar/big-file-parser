@@ -12,10 +12,15 @@ const filePath = __dirname + "/dummy.txt";
 describe("bigFileParserTest", () =>  {
 
     let myParser = new bigFileParser(filePath);
-    const readLine = sinon.spy();
     const content = fs.readFileSync(filePath,{"encoding":"utf-8"});
+    const readLine = sinon.spy();
+
+    before(function () {
+        this.timeout(1000);
+    })
     
     it("it should emit line event", (done) =>  {         
+        
         setTimeout(() => {
             assert.equal(readLine.callCount, 6);
             done();
@@ -26,6 +31,7 @@ describe("bigFileParserTest", () =>  {
 
 
     it("it should emit line event with the line-content as argument", (done) =>  {              
+
         setTimeout(() => {
             assert.deepStrictEqual(readLine.args[0][0], content.split("\r\n")[0]);
             done();
