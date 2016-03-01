@@ -4,7 +4,7 @@
   "description": "",
   "main": "parse.js",
   "scripts": {
-    "test": "mocha tests/ --timeout 3000  && eslint lib/ tests/"
+    "test": "mocha tests/ --timeout 10000  && eslint lib/ tests/"
   },
   "author": "Bharat Mhaskar <bmhaskar@gmail.com>",
   "license": "ISC",

@@ -19,7 +19,7 @@ describe("bigFileParserTest", () =>  {
         setTimeout(() => {
             assert.equal(readLine.callCount, 6);
             done();
-        },2000);
+        },3000);
         myParser.on("line",readLine);
         myParser.parse();
     }); 
@@ -29,7 +29,7 @@ describe("bigFileParserTest", () =>  {
         setTimeout(() => {
             assert.deepStrictEqual(readLine.args[0][0], content.split("\r\n")[0]);
             done();
-        },2000);
+        },3000);
         
     }); 
 
@@ -39,6 +39,6 @@ describe("bigFileParserTest", () =>  {
                 assert.deepStrictEqual(arg[0], content.split("\r\n")[i]);
             });  
             done();
-        },2000);
+        },3000);
     }); 
 });
