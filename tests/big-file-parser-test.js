@@ -1,7 +1,7 @@
-"use strict"
+"use strict";
 
 const assert = require("assert");
-//const sinon = require("sinon");
+const sinon = require("sinon");
 const fs = require("fs");
 
 const bigFileParser = require("../lib/bigFileParser");
@@ -9,22 +9,36 @@ const filePath = __dirname + "/dummy.txt";
 
 
 
-describe("bigFileParserTest", function() {
-	// const content = fs.readFileSync(filePath,{"encoding":"utf-8"});
+describe("bigFileParserTest", () =>  {
 
-	it("it should emit line event", function() {
-		// const readLine = sinon.spy();
-		const filePathWithName = __dirname+'/dummy.txt';
+    let myParser = new bigFileParser(filePath);
+    const readLine = sinon.spy();
+    const content = fs.readFileSync(filePath,{"encoding":"utf-8"});
+    
+    it("it should emit line event", (done) =>  {         
+        setTimeout(() => {
+            assert.equal(readLine.callCount, 6);
+            done();
+        },2000);
+        myParser.on("line",readLine);
+        myParser.parse();
+    }); 
 
 
-let myParser = new bigFileParser(filePathWithName);
+    it("it should emit line event with the line-content as argument", (done) =>  {              
+        setTimeout(() => {
+            assert.deepStrictEqual(readLine.args[0][0], content.split("\r\n")[0]);
+            done();
+        },2000);
+        
+    }); 
 
-myParser.parse();
-myParser.on('line', (line) => console.log("Line received :"+ line));
-myParser.on('error', (e) => console.log(e));
-
-		// assert.equal(6, true);
-		// done();
-
-	})
+    it("it should emit line event with the line-content as argument for all lines in file.", (done) =>  {
+        setTimeout(() => {
+            readLine.args.forEach((arg, i) => {
+                assert.deepStrictEqual(arg[0], content.split("\r\n")[i]);
+            });  
+            done();
+        },2000);
+    }); 
 });
